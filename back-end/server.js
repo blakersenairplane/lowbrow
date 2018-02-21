@@ -46,6 +46,23 @@ server.route({
     }
 })
 
+server.route({
+    method: 'POST',
+    path: '/story',
+    handler: async (request, h) => {
+        const story = await getStoryCollection()
+        story.insert(request.payload)
+        console.log(request.payload)
+        return h.response()
+    },
+    config: {
+        cors: {
+            origin: ['*'],
+            additionalHeaders: ['cache-control', 'x-requested-with']
+        }
+    }
+})
+
 async function start() {
 
     try {

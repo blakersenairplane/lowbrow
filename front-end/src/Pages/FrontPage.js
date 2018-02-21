@@ -10,14 +10,15 @@ export default class extends Component {
         const url = `http://localhost:3001${path}`
         const response = await fetch(url)
         const data = await response.json()
-
+        console.log(data)
         return data
     }
 
     async componentDidMount() {
         const storyResponse = await this.getData("/story")
+        console.log(storyResponse)
         this.setState({
-            stories: storyResponse.story
+            stories: storyResponse.stories
         })
     }
 
@@ -43,7 +44,7 @@ export default class extends Component {
                 </div>
                 <div class="middleFrontPage">
                     
-                    {this.renderStory(this.state.stories[this.state.stories.length -1])}
+                    {this.renderStory(this.state.stories[this.state.stories.length - 1])}
                 </div>
             </div>
         )

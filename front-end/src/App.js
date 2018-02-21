@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import FrontPage from "./Pages/FrontPage"
 import Submit from "./Pages/Submit"
 import About from "./Pages/About"
+import Moderate from "./Pages/Moderate"
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
             <Route exact path="/" component={()=> <FrontPage/>} />
             <Route path="/submit" component={()=> <Submit/>} />
             <Route path="/about" component={()=> <About/>} />
+            <Route path="/moderate" component={()=> <Moderate/>} />
           </div>
         </Router>
       </div>

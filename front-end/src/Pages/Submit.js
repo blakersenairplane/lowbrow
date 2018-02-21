@@ -16,7 +16,7 @@ export default class extends Component {
                 this.setState({ name: e.target.value })
                 break
             case "text":
-                this.setState({ story: e.target.value })
+                this.setState({ text: e.target.value })
                 break
             default:
                 throw Error("Invalid Id")
@@ -57,7 +57,7 @@ export default class extends Component {
                        Story: 
                     </div>
                     <div>
-                       <textarea id="text" class="text" onChange={this.onChangeHandler}></textarea><br/>
+                       <textarea id="text" class="textArea" onChange={this.onChangeHandler}></textarea><br/>
                        <button onClick={this.clickHandler}>Submit</button>
                     </div>
                    
