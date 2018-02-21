@@ -1,21 +1,16 @@
 import React, { Component } from "react"
 import {string} from "prop-types"
+import ApiWrapper from "../ApiWrapper"
 
 export default class extends Component {
     state = {
         stories: []
     }
 
-    getData = async (path) => {
-        const url = `https://back-end-aylmnnoafd.now.sh${path}`
-        const response = await fetch(url)
-        const data = await response.json()
-        console.log(data)
-        return data
-    }
+
 
     async componentDidMount() {
-        const storyResponse = await this.getData("/story")
+        const storyResponse = await ApiWrapper.get("/story")
         console.log(storyResponse)
         this.setState({
             stories: storyResponse.stories
@@ -39,10 +34,10 @@ export default class extends Component {
     render() {
         return (
             <div>
-                <div class="topFrontPage">
+                <div className="topFrontPage">
                     <img alt="" src="https://i.imgur.com/z4GRWr0.jpg"/>
                 </div>
-                <div class="middleFrontPage">
+                <div className="middleFrontPage">
                     
                     {this.renderStory(this.state.stories[this.state.stories.length - 1])}
                 </div>

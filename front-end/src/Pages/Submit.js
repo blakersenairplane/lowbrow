@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import {string} from "prop-types"
+import ApiWrapper from "../ApiWrapper"
 
 export default class extends Component {
     
@@ -23,32 +24,20 @@ export default class extends Component {
         }
     }
 
-    async postData(path, data) {
-        const url = `https://back-end-aylmnnoafd.now.sh${path}`
-        const response = await fetch(url, {
-            method: 'POST',
-            mode: 'CORS',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        console.log(response)
-        return response
-    }
+
 
     clickHandler = async () => {
-        await this.postData("/story", this.state)
+        await ApiWrapper.post("/story", this.state)
     }
 
     render() {
 
         return (
             <div>
-                <div class="topSubmit">
+                <div className="topSubmit">
                     <img alt="" src="https://i.imgur.com/0x8LLvK.jpg"/>
                 </div>
-                <div class="middleSubmit">
+                <div className="middleSubmit">
                     <div>Name: </div>
                     <div>
                         <input id="name" type="text" onChange={this.onChangeHandler}/><br/>
@@ -57,7 +46,7 @@ export default class extends Component {
                        Story: 
                     </div>
                     <div>
-                       <textarea id="text" class="textArea" onChange={this.onChangeHandler}></textarea><br/>
+                       <textarea id="text" className="textArea" onChange={this.onChangeHandler}></textarea><br/>
                        <button onClick={this.clickHandler}>Submit</button>
                     </div>
                    
