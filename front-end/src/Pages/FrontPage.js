@@ -7,7 +7,7 @@ export default class extends Component {
     }
 
     getData = async (path) => {
-        const url = `http://localhost:3001${path}`
+        const url = `https://back-end-aylmnnoafd.now.sh${path}`
         const response = await fetch(url)
         const data = await response.json()
         console.log(data)
