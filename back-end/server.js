@@ -2,6 +2,7 @@
 
 const Hapi = require('hapi')
 const Monk = require('monk')
+const ServerConfig = require("./serverConfig")
 
 const server = Hapi.server({ 
     host: 'localhost', 
@@ -9,8 +10,7 @@ const server = Hapi.server({
 })
 
 const getStoryCollection = async () => {
-    const connectionString = "mongodb://administrator:administrator1@ds241658.mlab.com:41658/lowbrow"
-    const db = Monk(connectionString)
+    const db = Monk(ServerConfig.mongoConnString)
     const story = await db.get("story")
     return story
 }
