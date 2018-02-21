@@ -24,7 +24,35 @@ const postData = async (path, data) => {
             'Content-Type': 'application/json'
         }
     })
-    console.log(response)
+    
+    return response
+}
+
+const updateFlagged = async (path, data) => {
+    const url = `${this.config.apiRoot}${path}`
+    const response = await fetch(url, {
+        method: 'PUT',
+        mode: 'CORS',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    
+    return response
+}
+
+const deleteFlagged = async (path, data) => {
+    const url = `${this.config.apiRoot}${path}`
+    const response = await fetch(url, {
+        method: 'DELETE',
+        mode: 'CORS',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    
     return response
 }
 
@@ -38,5 +66,7 @@ const getData = async (path) => {
 
 export default {
     post: postData,
-    get: getData
+    get: getData,
+    update: updateFlagged,
+    delete: deleteFlagged
 }

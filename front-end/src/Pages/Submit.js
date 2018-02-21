@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import {string} from "prop-types"
 import ApiWrapper from "../ApiWrapper"
 
 export default class extends Component {
@@ -8,7 +7,7 @@ export default class extends Component {
         name: "",
         text: "",
         rating: 3,
-        flagged: ""
+        flagged: false
     }
 
     onChangeHandler = (e) => {
@@ -30,6 +29,10 @@ export default class extends Component {
         await ApiWrapper.post("/story", this.state)
     }
 
+    refreshPage =() =>{
+        window.location.reload();
+    }
+
     render() {
 
         return (
@@ -38,16 +41,13 @@ export default class extends Component {
                     <img alt="" src="https://i.imgur.com/0x8LLvK.jpg"/>
                 </div>
                 <div className="middleSubmit">
-                    <div>Name: </div>
+                    
                     <div>
-                        <input id="name" type="text" onChange={this.onChangeHandler}/><br/>
+                        <input id="name" type="text" placeholder="Name" onChange={this.onChangeHandler}/>
                     </div>
                     <div>
-                       Story: 
-                    </div>
-                    <div>
-                       <textarea id="text" className="textArea" onChange={this.onChangeHandler}></textarea><br/>
-                       <button onClick={this.clickHandler}>Submit</button>
+                       <textarea id="text" placeholder="Story text goes here" className="textAreaSubmit" onChange={this.onChangeHandler}></textarea><br/>
+                       <button className="button button2" onClick={this.clickHandler}>Submit</button>
                     </div>
                    
                 </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import {string} from "prop-types"
+
 import ApiWrapper from "../ApiWrapper"
 
 export default class extends Component {
@@ -24,9 +24,10 @@ export default class extends Component {
             )
         }
         return(
-            <div key={story._id}>
+            <div key={story._id} id={story._id}>
             <h1>{story.name}</h1>
             <h3>{story.text}</h3>
+            <button>Report</button>
             </div>
         )
     }
