@@ -25,6 +25,12 @@ export default class extends Component {
         await this.loadStories()
     }
 
+    storyApprove = async (e) => {
+        console.log("Testing button", e.target)
+        await ApiWrapper.flag(`/story/${e.target.id}`)
+        await this.loadStories()
+    }
+
     renderStory = (story) => {
         if(!story){
             return(
@@ -40,7 +46,7 @@ export default class extends Component {
                     </div>
                     <div>
                         <button id={story._id} onClick={this.storyDelete}>Delete</button>
-                        <button>Approve</button>
+                        <button id={story._id} onClick={this.storyApprove}>Approve</button>
                     </div>
                     
                 </div>

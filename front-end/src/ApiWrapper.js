@@ -55,6 +55,20 @@ const updateFlag = async (path, data) => {
     return response
 }
 
+const updateApprove = async (path, data) => {
+    const url = `${this.config.apiRoot}${path}`
+    const response = await fetch(url, {
+        method: 'PATCH',
+        mode: 'CORS',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    
+    return response
+}
+
 const getData = async (path) => {
     const url = `${this.config.apiRoot}${path}`
     const response = await fetch(url)
@@ -67,5 +81,6 @@ export default {
     post: postData,
     get: getData,
     flag: updateFlag,
-    delete: deleteFlagged
+    delete: deleteFlagged,
+    approve: updateApprove
 }
