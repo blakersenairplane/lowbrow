@@ -13,7 +13,7 @@ export default class extends Component {
 
     loadStories = async () =>{
         const storyResponse = await ApiWrapper.get("/story")
-        console.log(storyResponse)
+        
         this.setState({
             stories: storyResponse.stories
         })
@@ -58,7 +58,7 @@ export default class extends Component {
 
         const storyElements = stories
             .filter((story, index, array) => {
-                return (story.flagged === true)
+                return (story.flagged === true) //can just return story.flagged because boolean
             })
             .map(this.renderStory)
         return storyElements
