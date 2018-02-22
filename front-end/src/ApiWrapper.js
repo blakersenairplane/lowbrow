@@ -28,12 +28,11 @@ const postData = async (path, data) => {
     return response
 }
 
-const updateFlagged = async (path, data) => {
+const deleteFlagged = async (path) => {
     const url = `${this.config.apiRoot}${path}`
     const response = await fetch(url, {
-        method: 'PUT',
+        method: 'DELETE',
         mode: 'CORS',
-        body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -42,10 +41,10 @@ const updateFlagged = async (path, data) => {
     return response
 }
 
-const deleteFlagged = async (path, data) => {
+const updateFlag = async (path, data) => {
     const url = `${this.config.apiRoot}${path}`
     const response = await fetch(url, {
-        method: 'DELETE',
+        method: 'PATCH',
         mode: 'CORS',
         body: JSON.stringify(data),
         headers: {
@@ -67,6 +66,6 @@ const getData = async (path) => {
 export default {
     post: postData,
     get: getData,
-    update: updateFlagged,
+    flag: updateFlag,
     delete: deleteFlagged
 }

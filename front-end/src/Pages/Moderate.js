@@ -8,6 +8,10 @@ export default class extends Component {
     }
 
     async componentDidMount() {
+        await this.loadStories()
+    }
+
+    loadStories = async () =>{
         const storyResponse = await ApiWrapper.get("/story")
         console.log(storyResponse)
         this.setState({
@@ -15,8 +19,10 @@ export default class extends Component {
         })
     }
 
-    storyDelete = async () => {
-        await ApiWrapper.delete("/story", this.state)
+    storyDelete = async (e) => {
+        console.log("Testing button", e.target)
+        await ApiWrapper.delete(`/story/${e.target.id}`)
+        await this.loadStories()
     }
 
     renderStory = (story) => {
@@ -33,15 +39,11 @@ export default class extends Component {
                         {story.text}
                     </div>
                     <div>
-                        <button onClick={this.storyDelete}>Delete</button>
+                        <button id={story._id} onClick={this.storyDelete}>Delete</button>
                         <button>Approve</button>
                     </div>
                     
                 </div>
-            
-            
-            
-            
             </div>
         )
     }

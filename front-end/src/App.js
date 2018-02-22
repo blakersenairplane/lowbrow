@@ -22,10 +22,10 @@ class App extends Component {
             </nav>
             
             
-            <Route exact path="/" component={()=> <FrontPage/>} />
-            <Route path="/submit" component={()=> <Submit/>} />
-            <Route path="/about" component={()=> <About/>} />
-            <Route path="/moderate" component={()=> <Moderate/>} />
+            <Route exact path="/" component={FrontPage} />
+            <Route path="/submit" component={Submit} />
+            <Route path="/about" component={About} />
+            <Route path="/moderate" component={Moderate} />
           </div>
         </Router>
       </div>

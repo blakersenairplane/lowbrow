@@ -27,11 +27,10 @@ export default class extends Component {
 
     clickHandler = async () => {
         await ApiWrapper.post("/story", this.state)
+        this.props.history.push("/")
     }
 
-    refreshPage =() =>{
-        window.location.reload();
-    }
+    
 
     render() {
 

@@ -71,17 +71,30 @@ server.route({
         story.remove(request.params.id)
         return h.response()
         
+    },
+    config: {
+        cors: {
+            origin: ['*'],
+            additionalHeaders: ['cache-control', 'x-requested-with']
+        }
     }
 })
 
+
 server.route({  
     method: 'PATCH',
-    path: '/story/{id}',
+    path: '/flag/{id}',
     handler: async (request, h) => {
         const story = await getStoryCollection()
-        story.update(request.params.id)
+        story.update({_id: request.params.id},{$set: {flagged: true}})
         return h.response()
         
+    },
+    config: {
+        cors: {
+            origin: ['*'],
+            additionalHeaders: ['cache-control', 'x-requested-with']
+        }
     }
 })
 

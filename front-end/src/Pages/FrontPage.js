@@ -17,17 +17,23 @@ export default class extends Component {
         })
     }
 
+    storyFlag = async (e) => {
+        console.log("Testing button", e.target)
+        await ApiWrapper.flag(`/flag/${e.target.id}`)
+        
+    }
+
     renderStory = (story) => {
         if(!story){
             return(
-                <div>Loading</div>
+                <div><img src="https://i.imgur.com/MpKGrES.gif"/></div>
             )
         }
         return(
             <div key={story._id} id={story._id}>
             <h1>{story.name}</h1>
             <h3>{story.text}</h3>
-            <button>Report</button>
+            <button id={story._id} onClick={this.storyFlag}>Report</button>
             </div>
         )
     }
